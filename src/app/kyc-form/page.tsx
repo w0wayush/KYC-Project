@@ -3,7 +3,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "@/app/store/index";
 import { setStep } from "@/app/store/slices/formSlice";
-import { Stepper, Button, Group } from "@mantine/core";
+import { Stepper } from "@mantine/core";
 import React from "react";
 import PersonalDetailForm from "./personalDetails/page";
 import AddressDetailsForm from "./addressDetails/page";
@@ -36,7 +36,8 @@ const steps = [
 ];
 
 export default function KYCFormPage() {
-  const { step } = useSelector((state: RootState) => state.form);
+  // const { step } = useSelector((state: RootState) => state.form);
+  const step = 3;
   const dispatch: AppDispatch = useDispatch();
 
   // Handle step changes
@@ -46,17 +47,70 @@ export default function KYCFormPage() {
 
   return (
     <div className="my-10 px-20">
-      <Stepper
-        active={step - 1}
-        onStepClick={handleStepChange}
-        allowNextStepsSelect={false}
-      >
+      {/* Stepper for larger screens */}
+      <div className="hidden lg:block">
+        <Stepper
+          active={step - 1}
+          onStepClick={handleStepChange}
+          allowNextStepsSelect={false}
+        >
+          {steps.map((form) => (
+            <Stepper.Step
+              key={form.id}
+              label={form.label}
+              description={form.description}
+            >
+              {step === form.id && (
+                <>
+                  {form.id === 1 && (
+                    <PersonalDetailForm
+                      step={step}
+                      handleStepChange={handleStepChange}
+                      steps={steps}
+                    />
+                  )}
+                  {form.id === 2 && (
+                    <AddressDetailsForm
+                      step={step}
+                      handleStepChange={handleStepChange}
+                      steps={steps}
+                    />
+                  )}
+                  {form.id === 3 && (
+                    <ProofOfIdentityForm
+                      step={step}
+                      handleStepChange={handleStepChange}
+                      steps={steps}
+                    />
+                  )}
+                  {form.id === 4 && (
+                    <ContactDetailsForm
+                      step={step}
+                      handleStepChange={handleStepChange}
+                      steps={steps}
+                    />
+                  )}
+                  {form.id === 5 && (
+                    <ApplicantDeclarationForm
+                      step={step}
+                      handleStepChange={handleStepChange}
+                      steps={steps}
+                    />
+                  )}
+                </>
+              )}
+            </Stepper.Step>
+          ))}
+          <Stepper.Completed>
+            Completed! Click back to go to previous steps.
+          </Stepper.Completed>
+        </Stepper>
+      </div>
+
+      {/* Forms for mobile screens */}
+      <div className="lg:hidden">
         {steps.map((form) => (
-          <Stepper.Step
-            key={form.id}
-            label={form.label}
-            description={form.description}
-          >
+          <React.Fragment key={form.id}>
             {step === form.id && (
               <>
                 {form.id === 1 && (
@@ -96,12 +150,9 @@ export default function KYCFormPage() {
                 )}
               </>
             )}
-          </Stepper.Step>
+          </React.Fragment>
         ))}
-        <Stepper.Completed>
-          Completed! Click back to go to previous steps.
-        </Stepper.Completed>
-      </Stepper>
+      </div>
     </div>
   );
 }

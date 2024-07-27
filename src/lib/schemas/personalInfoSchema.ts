@@ -18,7 +18,9 @@ const personalInformationSchema = z.object({
   motherFirstName: z.string().nonempty("Mother's first name is required"),
   motherMiddleName: z.string().optional(),
   motherLastName: z.string().nonempty("Mother's last name is required"),
-  dateOfBirth: z.date(),
+  dateOfBirth: z.coerce
+    .date()
+    .refine((date) => date > new Date(), "Provide a valid Date of Birth"),
   gender: z.enum(["Male", "Female", "Others"]),
   //   pancardNumber: z.number(),
   maritalStatus: z.enum(["Married", "Unmarried", "Others"]),
