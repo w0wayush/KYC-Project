@@ -103,7 +103,7 @@ export default function PersonalDetailForm({
     }
 
     console.log(data); // Handle form data here
-    await handleSave(data); // Save form data to localStorage
+    handleSave(data); // Save form data to localStorage
     handleNext(); // Proceed to next step
   };
 
@@ -213,7 +213,7 @@ export default function PersonalDetailForm({
             {/* Father's Information */}
             <div className="mt-8">
               <h3 className="text-lg font-semibold mb-4">
-                Father's Information
+                Father&apos;s Information
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Father's Name Prefix */}
@@ -305,7 +305,7 @@ export default function PersonalDetailForm({
             {/* Mother's Information */}
             <div className="mt-8">
               <h3 className="text-lg font-semibold mb-4">
-                Mother's Information
+                Mother&apos;s Information
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Mother's Name Prefix */}

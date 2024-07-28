@@ -36,8 +36,8 @@ const steps = [
 ];
 
 export default function KYCFormPage() {
-  // const { step } = useSelector((state: RootState) => state.form);
-  const step = 3;
+  const { step } = useSelector((state: RootState) => state.form);
+  // const step = 2;
   const dispatch: AppDispatch = useDispatch();
 
   // Handle step changes
