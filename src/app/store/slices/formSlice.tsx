@@ -17,7 +17,8 @@ const formSlice = createSlice({
       state.step = action.payload;
     },
     nextStep(state) {
-      if (state.step < 5) {
+      // if (state.step < 5) {
+      if (state.step < 7) {
         state.step += 1;
       }
     },

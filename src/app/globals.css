@@ -73,3 +73,37 @@
     linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
   background-size: 20px 20px;
 }
+
+.bg-diagonal-stripes {
+  background: linear-gradient(45deg, #e5e7eb 25%, transparent 25%) -50px 0,
+    linear-gradient(-45deg, #e5e7eb 25%, transparent 25%) -50px 0,
+    linear-gradient(45deg, transparent 75%, #e5e7eb 75%),
+    linear-gradient(-45deg, transparent 75%, #e5e7eb 75%);
+  background-size: 50px 50px;
+  background-blend-mode: multiply;
+}
+
+.bg-gradient {
+  background: linear-gradient(to bottom right, #a8c0ff, #fbc2eb);
+}
+
+.bg-geometric {
+  background: repeating-linear-gradient(
+    45deg,
+    #e5e7eb,
+    #e5e7eb 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+
+.bg-soft-color {
+  background: rgba(0, 0, 0, 0.1); /* Semi-transparent color overlay */
+}
+
+.bg-image {
+  background-image: url("https://i.pinimg.com/originals/6f/ea/17/6fea1751c3583deb372d907449477e1b.gif");
+  background-size: cover; /* Ensures the image covers the entire area */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+}

@@ -46,7 +46,7 @@ export default function KYCFormPage() {
   };
 
   return (
-    <div className="my-10 px-20">
+    <div className=" px-20">
       {/* Stepper for larger screens */}
       <div className="hidden lg:block">
         <Stepper
